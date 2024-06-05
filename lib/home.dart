@@ -165,7 +165,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                                 ),
                                                             ),
                                                         ),
-                                                        SizedBox(height: 20), // Add space
+                                                        SizedBox(height: 8), // Add space
                                                         Padding(
                                                             padding: EdgeInsetsDirectional.fromSTEB(18, 12, 18, 15),
                                                             child: GestureDetector(
@@ -250,246 +250,243 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                 ),
                                 SingleChildScrollView(
                                     child: Column(
-                                children: [
-                                // Consultation Tab
-                                Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                // Carousel of doctor images
-                                Container(
-                                width: double.infinity,
-                                height: 127,
-                                child: Stack(
-                                children: [
-                                Padding(
-                                padding: EdgeInsets.fromLTRB(8, 12, 8, 40),
-                                child: PageView(
-                                controller: _pageController,
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                // Doctor images (replace with your own)
-                                Image.network(
-                                'https://img.freepik.com/free-photo/doctor-suggesting-hospital-program-patient_53876-14806.jpg?size=626&ext=jpg',
-                                width: 300,
-        height: 287,
-        fit: BoxFit.cover,
-        ),
-        Image.network(
-        'https://images.unsplash.com/photo-1638202993928-7267aad84c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNHx8ZG9jdG9yfGVufDB8fHx8MTcxNzQwMzcxOHww&ixlib=rb-4.0.3&q=80&w=1080',
-        width: 300,
-        height: 200,
-        fit: BoxFit.fitWidth,
-        ),
-        Image.network(
-        'https://picsum.photos/seed/422/600',
-        width: 300,
-        height: 200,
-        fit: BoxFit.cover,
-        ),
-        ],
-        ),
-        ),
-        Align(
-        alignment: AlignmentDirectional(-1, 1),
-        child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(150, 0, 0, 16),
-        child: smooth_page_indicator.SmoothPageIndicator(
-        controller: _pageController,
-        count: 3,
-        axisDirection: Axis.horizontal,
-        onDotClicked: (i) async {
-        await _pageController.animateToPage(
-        i,
-        duration: Duration(milliseconds: 500),
-        curve: Curves.ease,
-        );
-        setState(() {});
-        },
-        effect: smooth_page_indicator.ExpandingDotsEffect(
-        expansionFactor: 3,
-        spacing: 8,
-        radius: 16,
-        dotWidth: 16,
-        dotHeight: 8,
-        dotColor: Color(0xFF4C06D5CD),
-        activeDotColor: Colors.black,
-        paintStyle: PaintingStyle.fill,
-        ),
-        ),
-        ),
-        ),
-        ],
-        ),
-        ),
-        // Doctor's Name and Info
-        Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 12),
-        child: Text(
-        'Doctors Near Me',
-        style: TextStyle(fontSize: 23, letterSpacing: 0, fontFamily: 'Inter'),
-        ),
-        ),
-        // Doctor's Card
-        Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 20),
-        child: Container(
-        width: double.infinity,
-        height: 94,
-        decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(24),
-        ),
-        child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-        Container(
-        width: 94,
-        height: 94,
-        decoration: BoxDecoration(
-        color: Color(0x5F91F0EB),
-        borderRadius: BorderRadius.circular(60),
-        ),
-        child: Image.asset(
-        'assets/images/doc1.png',
-        fit: BoxFit.cover,
-        ),
-        ),
-        Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-        child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-        Text(
-        'Dr. Emily Carter',
-        style: TextStyle(fontSize: 19, letterSpacing: 0, fontFamily: 'Readex Pro'),
-        ),
-        Text(
-        'Neurologist',
-        style: TextStyle(fontSize: 15, letterSpacing: 0, fontFamily: 'Poppins'),
-        ),
-        ],
-        ),
-        ),
-        Spacer(),
-        Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
-        child: Icon(
-        Icons.drag_indicator,
-        color: Color(0xFF545454),
-        size: 35,
-        ),
-        ),
-        ],
-        ),
-        ),
-        ),
-        Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-        Flexible(
-        child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-        Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(11, 5, 10, 0),
-        child: ElevatedButton(
-        onPressed: () {
-        print('Button pressed ...');
-        },
-        style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0x5F91F0EB)),
-        shape: MaterialStateProperty.all<OutlinedBorder>(
-        RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(60),
-        ),
-        ),
-        ),
-        child: Text(
-        '⏱︎ 14 years',
-        style: TextStyle(
-        fontFamily: 'Poppins',
-        color: Color(0xFF030303),
-        fontSize: 15,
-        ),
-        ),
-        ),
-        ),
-        Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(4, 5, 10, 0),
-        child: ElevatedButton(
-        onPressed: () {
-        print('Button pressed ...');
-        },
-        style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0x5F91F0EB)),
-        shape: MaterialStateProperty.all<OutlinedBorder>(
-        RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(60),
-        ),
-        ),
-        ),
-        child: Text(
-        '↑ 90% ',
-        style: TextStyle(
-        fontFamily: 'Poppins',
-        color: Colors.black,
-        fontSize: 15,
-        ),
-        ),
-        ),
-        ),
-        Expanded(
-        child: Align(
-        alignment: AlignmentDirectional(1, 0),
-        child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 9, 0),
-        child: ElevatedButton(
-        onPressed: () async {
-        Navigator.pushNamed(context, 'doctor1');
-        },
-        style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Color(0x5F91F0EB)),
-        shape: MaterialStateProperty.all<OutlinedBorder>(
-        RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-        bottomLeft: Radius.circular(60),
-        bottomRight: Radius.circular(60),
-        topLeft: Radius.circular(60),
-        topRight: Radius.circular(60),
-        ),
-        ),
-        ),
-        ),
-        child: Text(
-        '+ Appointment',
-        style: TextStyle(
-        fontFamily: 'Poppins',
-        color: Colors.black,
-        fontSize: 15,
-        ),
-        ),
+                                        children: [
+                                            Padding(
+                                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                                child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
 
-        ],
+                                                        Container(// Carousel of doctor images
+                                                            width: double.infinity,
+                                                            height: 127,
+                                                            child: Stack(
+                                                                children: [
+                                                                    Padding(
+                                                                        padding: EdgeInsets.fromLTRB(8, 12, 8, 40),
+                                                                        child: PageView(
+                                                                            controller: _pageController,
+                                                                            scrollDirection: Axis.horizontal,
+                                                                            children: [
+                                                                                // Doctor images (replace with your own)
+                                                                                Image.network(
+                                                                                    'https://img.freepik.com/free-photo/doctor-suggesting-hospital-program-patient_53876-14806.jpg?size=626&ext=jpg',
+                                                                                    width: 300,
+                                                                                    height: 287,
+                                                                                    fit: BoxFit.cover,
+                                                                                ),
+                                                                                Image.network(
+                                                                                    'https://images.unsplash.com/photo-1638202993928-7267aad84c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNHx8ZG9jdG9yfGVufDB8fHx8MTcxNzQwMzcxOHww&ixlib=rb-4.0.3&q=80&w=1080',
+                                                                                    width: 300,
+                                                                                    height: 200,
+                                                                                    fit: BoxFit.fitWidth,
+                                                                                ),
+                                                                                Image.network(
+                                                                                    'https://picsum.photos/seed/422/600',
+                                                                                    width: 300,
+                                                                                    height: 200,
+                                                                                    fit: BoxFit.cover,
+                                                                                ),
+                                                                            ],
+                                                                        ),
+                                                                    ),
+                                                                    Align(
+                                                                        alignment: AlignmentDirectional(-1, 1),
+                                                                        child: Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(150, 0, 0, 16),
+                                                                            child: smooth_page_indicator.SmoothPageIndicator(
+                                                                                controller: _pageController,
+                                                                                count: 3,
+                                                                                axisDirection: Axis.horizontal,
+                                                                                onDotClicked: (i) async {
+                                                                                    await _pageController.animateToPage(
+                                                                                        i,
+                                                                                        duration: Duration(milliseconds: 500),
+                                                                                        curve: Curves.ease,
+                                                                                    );
+                                                                                    setState(() {});
+                                                                                    },
+                                                                                effect: smooth_page_indicator.ExpandingDotsEffect(
+                                                                                    expansionFactor: 3,
+                                                                                    spacing: 8,
+                                                                                    radius: 16,
+                                                                                    dotWidth: 16,
+                                                                                    dotHeight: 8,
+                                                                                    dotColor: Color(0xFF4C06D5CD), activeDotColor: Colors.black,
+                                                                                    paintStyle: PaintingStyle.fill,
+                                                                                ),
+                                                                            ),
+                                                                        ),
+                                                                    ),
+                                                                ],
+                                                            ),
+                                                        ),
+                                                        // Doctor's Name and Info
+                                                        Padding(
+                                                            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 12),
+                                                            child: Text(
+                                                                'Doctors Near Me',
+                                                                style: TextStyle(fontSize: 23, letterSpacing: 0, fontFamily: 'Inter'),
+                                                            ),
+                                                        ),
+                                                        // Doctor's Card
+                                                        Padding(
+                                                            padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 20),
+                                                            child: Container(
+                                                                width: double.infinity,
+                                                                height: 94,
+                                                                decoration: BoxDecoration(
+                                                                    color: Colors.white,
+                                                                    borderRadius: BorderRadius.circular(24),
+                                                                ),
+                                                                child: Row(
+                                                                    mainAxisSize: MainAxisSize.max,
+                                                                    children: [
+                                                                        Container(
+                                                                            width: 94,
+                                                                            height: 94,
+                                                                            decoration: BoxDecoration(
+                                                                                color: Color(0x5F91F0EB),
+                                                                                borderRadius: BorderRadius.circular(60),
+                                                                            ),
+                                                                            child: Image.asset(
+                                                                                'assets/images/doc1.png',
+                                                                                fit: BoxFit.cover,
+                                                                            ),
+                                                                        ),
+                                                                        Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                                                                            child: Column(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                children: [
+                                                                                    Text(
+                                                                                        'Dr. Emily Carter',
+                                                                                        style: TextStyle(fontSize: 19, letterSpacing: 0, fontFamily: 'Readex Pro'),
+                                                                                    ),
+                                                                                    Text(
+                                                                                        'Neurologist',
+                                                                                        style: TextStyle(fontSize: 15, letterSpacing: 0, fontFamily: 'Poppins'),
+                                                                                    ),
+                                                                                ],
+                                                                            ),
+                                                                        ),
+                                                                        Spacer(),
+                                                                        Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 16, 0),
+                                                                            child: Icon(
+                                                                                Icons.drag_indicator,
+                                                                                color: Color(0xFF545454),
+                                                                                size: 35,
+                                                                            ),
+                                                                        ),
+                                                                    ],
+                                                                ),
+                                                            ),
+                                                        ),
+                                                        Row(
+                                                            mainAxisSize: MainAxisSize.max,
+                                                            children: [
+                                                                Flexible(
+                                                                    child: Row(
+                                                                        mainAxisSize: MainAxisSize.max,
+                                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                                        children: [
+                                                                            Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(11, 5, 10, 0),
+                                                                                child: ElevatedButton(
+                                                                                    onPressed: () {
+                                                                                        print('Button pressed ...');
+                                                                                        }, style: ButtonStyle(
+                                                                                    backgroundColor: MaterialStateProperty.all<Color>(Color(0x5F91F0EB)),
+                                                                                    shape: MaterialStateProperty.all<OutlinedBorder>(
+                                                                                        RoundedRectangleBorder(
+                                                                                            borderRadius: BorderRadius.circular(60),
+                                                                                        ),
+                                                                                    ),
+                                                                                ),
+                                                                                    child: Text(
+                                                                                        '⏱︎ 14 years',
+                                                                                        style: TextStyle(fontFamily: 'Poppins', color: Color(0xFF030303),
+                                                                                            fontSize: 15,
+                                                                                        ),
+                                                                                    ),
+                                                                                ),
+                                                                            ),
+                                                                            Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(4, 5, 10, 0),
+                                                                                child: ElevatedButton(
+                                                                                    onPressed: () {
+                                                                                        print('Button pressed ...');
+                                                                                        },
+                                                                                    style: ButtonStyle(
+                                                                                        backgroundColor: MaterialStateProperty.all<Color>(Color(0x5F91F0EB)),
+                                                                                        shape: MaterialStateProperty.all<OutlinedBorder>(
+                                                                                            RoundedRectangleBorder(
+                                                                                                borderRadius: BorderRadius.circular(60),
+                                                                                            ),
+                                                                                        ),
+                                                                                    ),
+                                                                                    child: Text(
+                                                                                        '↑ 90% ',
+                                                                                        style: TextStyle(
+                                                                                            fontFamily: 'Poppins',
+                                                                                            color: Colors.black,
+                                                                                            fontSize: 15,
+                                                                                        ),
+                                                                                    ),
+                                                                                ),
+                                                                            ),
+                                                                            Expanded(
+                                                                                child: Align(
+                                                                                    alignment: AlignmentDirectional(1, 0),
+                                                                                    child: Padding(
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(0, 5, 9, 0),
+                                                                                        child: ElevatedButton(
+                                                                                            onPressed: () async {
+                                                                                                Navigator.pushNamed(context, 'doctor1');
+                                                                                                },
+                                                                                            style: ButtonStyle(
+                                                                                                backgroundColor: MaterialStateProperty.all<Color>(Color(0x5F91F0EB)),
+                                                                                                shape: MaterialStateProperty.all<OutlinedBorder>(
+                                                                                                    RoundedRectangleBorder(
+                                                                                                        borderRadius: BorderRadius.only(
+                                                                                                            bottomLeft: Radius.circular(60),
 
-        ),
-        ),
-        ),
-        ],
-        ),
-        ),
-        ],
-        ),
-        ),
-        ],
-        ),
-        ),
-        ],
-        ),
+                                                                                                            bottomRight: Radius.circular(60),
+                                                                                                            topLeft: Radius.circular(60),
+                                                                                                            topRight: Radius.circular(60),
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                ),
+                                                                                            ),
+                                                                                            child: Text(
+                                                                                                '+ Appointment',
+                                                                                                style: TextStyle(
+                                                                                                    fontFamily: 'Poppins',
+                                                                                                    color: Colors.black,
+                                                                                                    fontSize: 15,
+                                                                                                ),
+                                                                                            ),
+                                                                                        )
+                                                                                    )
+                                                                                )
+                                                                            )],
+                                                                    ),
+                                                                ),
+                                                            ]),
+                                                    ],
+                                                ),
+                                            ),
+                                        ],
+                                    ),
+                                ),
+                            ],
+                        ),
+                    ),
+                ],
+            ),
         );
     }
 }
