@@ -230,3 +230,77 @@ class CustomInputField extends StatelessWidget {
     );
   }
 }
+class SocialButton extends StatelessWidget {
+  final String buttonText;
+  final Widget icon;
+  final double width;
+  final double height;
+  final double iconSize;
+  final EdgeInsetsGeometry padding;
+  final Color backgroundColor;
+  final Color borderColor;
+  final double borderRadius;
+  final VoidCallback? onTap;
+
+  const SocialButton({
+    Key? key,
+    required this.buttonText,
+    required this.icon,
+    required this.onTap,
+    this.width = 342,
+    this.height = 50,
+    this.iconSize = 20,
+    this.padding = const EdgeInsets.symmetric(vertical: 10, horizontal: 19),
+    this.backgroundColor = const Color(0xFFF9FAFB),
+    this.borderColor = const Color(0xFFE5E7EB),
+    this.borderRadius = 8,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: width,
+        height: height,
+        padding: padding,
+        clipBehavior: Clip.antiAlias,
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              width: 1,
+              color: borderColor,
+            ),
+            borderRadius: BorderRadius.circular(borderRadius),
+          ),
+          color: backgroundColor,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: iconSize,
+              height: iconSize,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(),
+              child: icon,
+            ),
+            SizedBox(width: 10), // Add some space between icon and text
+            Text(
+              buttonText,
+              style: TextStyle(
+                color: Color(0xFF1C2A3A),
+                fontSize: 14,
+                fontFamily: 'Inter',
+                fontWeight: FontWeight.w500,
+                height: 0.11,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

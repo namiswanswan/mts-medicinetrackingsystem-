@@ -42,6 +42,10 @@ class Example extends StatelessWidget {
                   icon: Icons.person,
                   controller: TextEditingController(),
                 ),
+                SizedBox(height: 20),
+                SocialButton(buttonText: "Google", icon: Image.asset('assets/images/Google - Original.png'),onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
+                },)
               ],
             ),
           )
