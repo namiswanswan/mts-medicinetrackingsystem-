@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   table_calendar: ^3.1.1
   smooth_page_indicator: ^1.1.0
+  mysql1: ^0.20.0
 
 dev_dependencies:
   flutter_test:
@@ -63,4 +64,8 @@ flutter:
 
   assets:
 
-  - assets/images/
+  - assets/images/Avatar.png
+  - assets/images/doc1.png
+  - assets/images/Google - Original.png
+  - assets/images/Lisinopril.png
+  - assets/images/Metformin.png

@@ -48,21 +48,77 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
             body: Column(
                 children: [
-                    TabBar(
-                        controller: tabController,
-                        tabs: [
-                            Tab(text: 'Medicines'),
-                            Tab(text: 'Consultation'),
-                        ],
+                    Container(
+                        margin: EdgeInsets.all(4), // Add margin around the entire TabBar
+                        child: Padding(
+                            padding: EdgeInsets.only(top: 12), // Add padding to the top
+                            child: Align(
+                                alignment: Alignment(0, 0),
+                                child: TabBar(
+                                    controller: tabController,
+                                    labelPadding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0), // Right and left padding for the labels
+                                    indicatorPadding: EdgeInsets.all(1), // Ensure the indicator covers the entire tab
+                                    indicator: ShapeDecoration(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(1000), // Creates border radius for the indicator
+                                            side: BorderSide(color: Color(0xFF06d5cd), width: 2), // Border color and width when selected
+                                        ),
+                                        color: Color(0x4c06d5cd), // Fill color when selected
+                                    ),
+                                    labelColor: Color(0xFF4c06d5cd), // Color of the label when selected
+                                    unselectedLabelColor: Color(0xffdfedec), // Color of the label when not selected
+                                    tabs: [
+                                        Tab(
+                                            child: Container(
+                                                margin: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0), // Margin between tabs
+                                                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 0.5), // Padding inside the tab
+                                                decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(1000), // Rounded corners
+                                                    color: Color(0xffdfedec), // Background color when not selected
+                                                    border: Border.all(color: Color(0xffe7eae9), width: 2), // Border color when not selected
+                                                ),
+                                                child: Text(
+                                                    'Medicines',
+                                                    style: TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        letterSpacing: 0,
+                                                    ),
+                                                ),
+                                            ),
+                                        ),
+                                        Tab(
+                                            child: Container(
+                                                margin: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0), // Margin between tabs
+                                                padding: EdgeInsets.symmetric(horizontal: 14, vertical: 0.5), // Padding inside the tab
+                                                decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(1000), // Rounded corners
+                                                    color: Color(0xffdfedec), // Background color when not selected
+                                                    border: Border.all(color: Color(0xffe7eae9), width: 2), // Border color when not selected
+                                                ),
+                                                child: Text(
+                                                    'Consultation',
+                                                    style: TextStyle(
+                                                        fontFamily: 'Poppins',
+                                                        letterSpacing: 0,
+                                                    ),
+                                                ),
+                                            ),
+                                        ),
+                                    ],
+                                ),
+                            ),
+                        ),
                     ),
                     Expanded(
-                        child: TabBarView(
+                        child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                    child: TabBarView(
                             controller: tabController,
                             children: [
                                 SingleChildScrollView(
                                     child: Column(
                                         children: [
-                                            SizedBox(height: 12),
+                                            SizedBox(height: 10),
                                             TableCalendar(
                                                 firstDay: DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1)),
                                                 lastDay: DateTime.now().add(Duration(days: 365)),
@@ -256,10 +312,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                 child: Column(
                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                     children: [
-
                                                         Container(// Carousel of doctor images
                                                             width: double.infinity,
-                                                            height: 127,
+                                                            height: 175,
                                                             child: Stack(
                                                                 children: [
                                                                     Padding(
@@ -268,25 +323,33 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                                             controller: _pageController,
                                                                             scrollDirection: Axis.horizontal,
                                                                             children: [
-                                                                                // Doctor images (replace with your own)
-                                                                                Image.network(
+                                                                        ClipRRect(
+                                                                        borderRadius: BorderRadius.circular(35), // Set the radius as needed
+                                                                        child: Image.network(
                                                                                     'https://img.freepik.com/free-photo/doctor-suggesting-hospital-program-patient_53876-14806.jpg?size=626&ext=jpg',
                                                                                     width: 300,
                                                                                     height: 287,
                                                                                     fit: BoxFit.cover,
                                                                                 ),
-                                                                                Image.network(
+                                                                        ),
+                                                ClipRRect(
+                                                    borderRadius: BorderRadius.circular(35), // Set the radius as needed
+                                                    child: Image.network(
                                                                                     'https://images.unsplash.com/photo-1638202993928-7267aad84c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxNHx8ZG9jdG9yfGVufDB8fHx8MTcxNzQwMzcxOHww&ixlib=rb-4.0.3&q=80&w=1080',
                                                                                     width: 300,
                                                                                     height: 200,
                                                                                     fit: BoxFit.fitWidth,
                                                                                 ),
-                                                                                Image.network(
+                                                ),
+                                                ClipRRect(
+                                                    borderRadius: BorderRadius.circular(35), // Set the radius as needed
+                                                    child: Image.network(
                                                                                     'https://picsum.photos/seed/422/600',
                                                                                     width: 300,
                                                                                     height: 200,
                                                                                     fit: BoxFit.cover,
                                                                                 ),
+                                                ),
                                                                             ],
                                                                         ),
                                                                     ),
@@ -305,7 +368,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                                                         curve: Curves.ease,
                                                                                     );
                                                                                     setState(() {});
-                                                                                    },
+                                                                                },
                                                                                 effect: smooth_page_indicator.ExpandingDotsEffect(
                                                                                     expansionFactor: 3,
                                                                                     spacing: 8,
@@ -398,7 +461,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                                                 child: ElevatedButton(
                                                                                     onPressed: () {
                                                                                         print('Button pressed ...');
-                                                                                        }, style: ButtonStyle(
+                                                                                    }, style: ButtonStyle(
                                                                                     backgroundColor: MaterialStateProperty.all<Color>(Color(0x5F91F0EB)),
                                                                                     shape: MaterialStateProperty.all<OutlinedBorder>(
                                                                                         RoundedRectangleBorder(
@@ -419,7 +482,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                                                 child: ElevatedButton(
                                                                                     onPressed: () {
                                                                                         print('Button pressed ...');
-                                                                                        },
+                                                                                    },
                                                                                     style: ButtonStyle(
                                                                                         backgroundColor: MaterialStateProperty.all<Color>(Color(0x5F91F0EB)),
                                                                                         shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -446,7 +509,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                                                         child: ElevatedButton(
                                                                                             onPressed: () async {
                                                                                                 Navigator.pushNamed(context, 'doctor1');
-                                                                                                },
+                                                                                            },
                                                                                             style: ButtonStyle(
                                                                                                 backgroundColor: MaterialStateProperty.all<Color>(Color(0x5F91F0EB)),
                                                                                                 shape: MaterialStateProperty.all<OutlinedBorder>(
@@ -484,6 +547,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                 ),
                             ],
                         ),
+                    ),
                     ),
                 ],
             ),

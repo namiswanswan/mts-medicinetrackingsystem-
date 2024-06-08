@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 class CustomLink extends StatelessWidget {
   final String text;
   final VoidCallback? onTap;
@@ -7,7 +8,7 @@ class CustomLink extends StatelessWidget {
   final TextStyle _textStyle = const TextStyle(
     color: Color(0xFF6B7280),
     fontSize: 14,
-    fontFamily: 'Inter',
+    fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
   );
 
@@ -20,11 +21,6 @@ class CustomLink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // decoration: BoxDecoration(
-      //   border: Border.all(
-      //     color: Colors.red,
-      //   ),
-      // ),
       height: 50,
       child: GestureDetector(
         onTap: onTap,
@@ -41,24 +37,25 @@ class CustomLink extends StatelessWidget {
     );
   }
 }
+
 class CustomButton extends StatelessWidget {
   final double width;
   final double height;
   final VoidCallback? onTap;
   final EdgeInsetsGeometry padding;
   final String text;
+
   final TextStyle _textStyle = const TextStyle(
     color: Colors.white,
     fontSize: 16,
-    fontFamily: 'Inter',
+    fontFamily: 'Poppins',
     fontWeight: FontWeight.w500,
-    height: 1.5, // Fixed height
+    height: 1.5,
   );
-  // Fixed parameters
+
   final Color _backgroundColor = const Color(0xFF1C2A3A);
   final Color _borderColor = const Color(0xFFE5E7EB);
   final double _borderRadius = 61;
-
 
   const CustomButton({
     Key? key,
@@ -109,6 +106,7 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+
 class CustomIndicator extends StatelessWidget {
   final int activeIndex;
   final int totalCount;
@@ -153,7 +151,7 @@ class CustomIndicator extends StatelessWidget {
                   ),
                 ),
               ),
-              if (index < totalCount - 1) SizedBox(width: spacing), // add spacing except after the last item
+              if (index < totalCount - 1) SizedBox(width: spacing),
             ],
           );
         }),
@@ -161,6 +159,7 @@ class CustomIndicator extends StatelessWidget {
     );
   }
 }
+
 class CustomInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
@@ -214,14 +213,14 @@ class CustomInputField extends StatelessWidget {
                           hintStyle: TextStyle(
                             color: Color(0xFF9CA3AF),
                             fontSize: 14,
-                            fontFamily: 'Inter',
+                            fontFamily: 'Poppins',
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 14,
-                          fontFamily: 'Inter',
+                          fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -236,6 +235,7 @@ class CustomInputField extends StatelessWidget {
     );
   }
 }
+
 class SocialButton extends StatelessWidget {
   final String buttonText;
   final Widget icon;
@@ -293,13 +293,13 @@ class SocialButton extends StatelessWidget {
               decoration: BoxDecoration(),
               child: icon,
             ),
-            SizedBox(width: 10), // Add some space between icon and text
+            SizedBox(width: 10),
             Text(
               buttonText,
               style: TextStyle(
                 color: Color(0xFF1C2A3A),
                 fontSize: 14,
-                fontFamily: 'Inter',
+                fontFamily: 'Poppins',
                 fontWeight: FontWeight.w500,
                 height: 0.11,
               ),
@@ -310,6 +310,7 @@ class SocialButton extends StatelessWidget {
     );
   }
 }
+
 class Modal extends StatelessWidget {
   final String title;
   final String message;
@@ -353,7 +354,7 @@ class Modal extends StatelessWidget {
                   style: TextStyle(
                     color: Color(0xFF1C2A3A),
                     fontSize: 20,
-                    fontFamily: 'Inter',
+                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -364,49 +365,52 @@ class Modal extends StatelessWidget {
                   style: TextStyle(
                     color: Color(0xFF6B7280),
                     fontSize: 14,
-                    fontFamily: 'Inter',
+                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 SizedBox(height: 16),
-                if (buttonVisibility && buttonText != null && buttonText!.isNotEmpty)
-                  Container(
-                  width: 311,
-                  height: 50,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 311,
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                        decoration: ShapeDecoration(
-                          color: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(61),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              buttonText,
-                              style: TextStyle(
-                              color: Color(0xFFFFFFFF),
-                              fontSize: 14,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w400,
+                if (buttonVisibility && buttonText.isNotEmpty)
+                  GestureDetector(
+                    onTap: onTap,
+                    child: Container(
+                      width: 311,
+                      height: 50,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 311,
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                            decoration: ShapeDecoration(
+                              color: Colors.blue,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(61),
                               ),
                             ),
-                          ],
-                        ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  buttonText,
+                                  style: TextStyle(
+                                    color: Color(0xFFFFFFFF),
+                                    fontSize: 14,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                )
               ],
             ),
           ),
@@ -415,6 +419,7 @@ class Modal extends StatelessWidget {
     );
   }
 }
+
 class CustomBottomNavigationBar extends StatelessWidget {
   final List<Icon> icons;
   final List<VoidCallback> onTapFunctions;
@@ -427,28 +432,27 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        Container(
-          width: 390,
-          height: 76,
-          padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 14),
-          decoration: BoxDecoration(color: Colors.white),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              for (int i = 0; i < icons.length; i++)
-                GestureDetector(
-                  onTap: onTapFunctions[i],
-                  child: Container(
-                    width: 24,
-                    height: 24,
-                    child: icons[i],
-                  ),
-                ),
-            ],
-          ),
-        );
+    return Container(
+      width: 390,
+      height: 76,
+      padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 14),
+      decoration: BoxDecoration(color: Colors.white),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          for (int i = 0; i < icons.length; i++)
+            GestureDetector(
+              onTap: onTapFunctions[i],
+              child: Container(
+                width: 24,
+                height: 24,
+                child: icons[i],
+              ),
+            ),
+        ],
+      ),
+    );
   }
 }
