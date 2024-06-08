@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class CustomLink extends StatelessWidget {
   final String text;
@@ -43,6 +44,7 @@ class CustomLink extends StatelessWidget {
 class CustomButton extends StatelessWidget {
   final double width;
   final double height;
+  final VoidCallback? onTap;
   final EdgeInsetsGeometry padding;
   final String text;
   final TextStyle _textStyle = const TextStyle(
@@ -60,6 +62,7 @@ class CustomButton extends StatelessWidget {
 
   const CustomButton({
     Key? key,
+    required this.onTap,
     this.width = 311,
     this.height = 50,
     this.padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
@@ -68,37 +71,40 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: width,
-            padding: padding,
-            decoration: ShapeDecoration(
-              color: _backgroundColor,
-              shape: RoundedRectangleBorder(
-                side: BorderSide(width: 1, color: _borderColor),
-                borderRadius: BorderRadius.circular(_borderRadius),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: width,
+        height: height,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: width,
+              padding: padding,
+              decoration: ShapeDecoration(
+                color: _backgroundColor,
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(width: 1, color: _borderColor),
+                  borderRadius: BorderRadius.circular(_borderRadius),
+                ),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    text,
+                    style: _textStyle,
+                  ),
+                ],
               ),
             ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  text,
-                  style: _textStyle,
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -302,5 +308,147 @@ class SocialButton extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+class Modal extends StatelessWidget {
+  final String title;
+  final String message;
+  final bool buttonVisibility;
+  final String buttonText;
+  final VoidCallback? onTap;
+  final Widget icon;
+
+  const Modal({
+    Key? key,
+    required this.title,
+    required this.message,
+    this.buttonText = "",
+    this.buttonVisibility = true,
+    this.onTap,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                icon,
+                const SizedBox(height: 16),
+                Text(
+                  title,
+                  style: TextStyle(
+                    color: Color(0xFF1C2A3A),
+                    fontSize: 20,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xFF6B7280),
+                    fontSize: 14,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                SizedBox(height: 16),
+                if (buttonVisibility && buttonText != null && buttonText!.isNotEmpty)
+                  Container(
+                  width: 311,
+                  height: 50,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 311,
+                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                        decoration: ShapeDecoration(
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(61),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              buttonText,
+                              style: TextStyle(
+                              color: Color(0xFFFFFFFF),
+                              fontSize: 14,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+class CustomBottomNavigationBar extends StatelessWidget {
+  final List<Icon> icons;
+  final List<VoidCallback> onTapFunctions;
+
+  const CustomBottomNavigationBar({
+    Key? key,
+    required this.icons,
+    required this.onTapFunctions,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return
+        Container(
+          width: 390,
+          height: 76,
+          padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 14),
+          decoration: BoxDecoration(color: Colors.white),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              for (int i = 0; i < icons.length; i++)
+                GestureDetector(
+                  onTap: onTapFunctions[i],
+                  child: Container(
+                    width: 24,
+                    height: 24,
+                    child: icons[i],
+                  ),
+                ),
+            ],
+          ),
+        );
   }
 }

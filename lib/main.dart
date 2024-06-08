@@ -24,13 +24,44 @@ class Example extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        bottomNavigationBar: CustomBottomNavigationBar(
+          icons: [
+            Icon(Icons.home),
+            Icon(Icons.settings),
+            Icon(Icons.notifications),
+            Icon(Icons.person),
+          ],
+          onTapFunctions: [
+                () => print('Home icon tapped'),
+                () => print('Settings icon tapped'),
+                () => print('Notifications icon tapped'),
+                () => print('Profile icon tapped'),
+          ],
+        ),
         appBar: AppBar(title: Text('Custom Widgets to Be used')),
         body: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
                 CustomButton(
-                  text: 'Next',
+                  text: 'Cilck To see Dilog BOx',
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Modal(
+                          title: 'Your Dialog Title',
+                          message: 'Your Dialog Message',
+                          buttonText: 'OK',
+                          onTap: () {
+                            // Handle button tap inside the dialog
+                            Navigator.of(context).pop(); // Close the dialog
+                          },
+                          icon: Icon(Icons.info), // Add your desired icon
+                        );
+                      },
+                    );
+                  },
                 ),
                 CustomLink(text: 'Skip',onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
@@ -45,7 +76,8 @@ class Example extends StatelessWidget {
                 SizedBox(height: 20),
                 SocialButton(buttonText: "Google", icon: Image.asset('assets/images/Google - Original.png'),onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Home()));
-                },)
+                },),
+                SizedBox(height: 20),
               ],
             ),
           )
