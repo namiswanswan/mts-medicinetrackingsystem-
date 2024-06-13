@@ -6,72 +6,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class VisibilityEffect {
-  final Duration duration;
-
-  VisibilityEffect({required this.duration});
-}
-
-class FadeEffect {
-  final Curve curve;
-  final Duration delay;
-  final Duration duration;
-  final double begin;
-  final double end;
-
-  FadeEffect({
-    required this.curve,
-    required this.delay,
-    required this.duration,
-    required this.begin,
-    required this.end,
-  });
-}
-
-class MoveEffect {
-  final Curve curve;
-  final Duration delay;
-  final Duration duration;
-  final Offset begin;
-  final Offset end;
-
-  MoveEffect({
-    required this.curve,
-    required this.delay,
-    required this.duration,
-    required this.begin,
-    required this.end,
-  });
-}
-
-class ScaleEffect {
-  final Curve curve;
-  final Duration delay;
-  final Duration duration;
-  final Offset begin;
-  final Offset end;
-
-  ScaleEffect({
-    required this.curve,
-    required this.delay,
-    required this.duration,
-    required this.begin,
-    required this.end,
-  });
-}
-class AnimationInfo {
-  final AnimationTrigger trigger;
-
-  AnimationInfo({
-    required this.trigger,
-    required List<Object> Function() effectsBuilder, required bool applyInitialState,
-  });
-}
-abstract class Effect {}
-
-enum AnimationTrigger {
-  onPageLoad, onActionTrigger,
-}
 class LoginModel {
   final unfocusNode = FocusNode();
   TabController? tabBarController;
@@ -133,7 +67,6 @@ class _LoginState extends State<LoginWidget>
     with TickerProviderStateMixin {
   late LoginModel _model;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -745,8 +678,7 @@ class _LoginState extends State<LoginWidget>
   ),
   ],
   ),
-  ).animateOnPageLoad(animationsMap[
-  'columnOnPageLoadAnimation1']!),
+  )
   ),
   ),
   Align(
@@ -1247,8 +1179,7 @@ Color(0xF5FBFB),
 ),
 ],
 ),
-).animateOnPageLoad(animationsMap[
-'columnOnPageLoadAnimation1']!),
+)
 ),
 ),
 Align(
@@ -1637,22 +1568,9 @@ EdgeInsetsDirectional
 0, 0, 16),
 child: ElevatedButton(
 onPressed:
-() async {
-GoRouter.of(
-context)
-    .prepareAuthEvent();
-final user =
-await authManager
-    .signInWithGoogle(
-context);
-if (user ==
-null) {
-return;
+() async {//google signin
 }
-context.pushNamedAuth(
-'home',
-context
-    .mounted);
+//navigate to home
 },
 text:
 'Continue with Google',
@@ -1714,15 +1632,7 @@ EdgeInsetsDirectional
     .fromSTEB(
 0, 0, 0, 16),
 child: ElevatedButton(
-onPressed: () async {
-GoRouter.of(context)
-    .prepareAuthEvent();
-final user =
-await authManager
-    .signInWithGoogle(
-context);
-if (user == null) {
-return;
+onPressed: () async {//google signin firebase
 }
 
 context.goNamedAuth(
@@ -1765,8 +1675,7 @@ Color(0xf5fbfb),
 ),
 ],
 ),
-).animateOnPageLoad(animationsMap[
-'columnOnPageLoadAnimation2']!),
+)
 ),
 ),
 ],
@@ -1775,8 +1684,7 @@ Color(0xf5fbfb),
 ],
 ),
 ),
-).animateOnPageLoad(
-animationsMap['containerOnPageLoadAnimation']!),
+)
 ),
 ],
 ),
@@ -1814,15 +1722,7 @@ EdgeInsetsDirectional
     .fromSTEB(
 0, 0, 0, 16),
 child: ElevatedButton(
-onPressed: () async {
-GoRouter.of(context)
-    .prepareAuthEvent();
-final user =
-await authManager
-    .signInWithGoogle(
-context);
-if (user == null) {
-return;
+onPressed: () async {//googlefirebase here
 }
 
 context.goNamedAuth(
@@ -1868,8 +1768,7 @@ hoverColor:Color(0xFFf5fbfb),
 ),
 ],
 ),
-).animateOnPageLoad(animationsMap[
-'columnOnPageLoadAnimation2']!),
+)
 ),
 ),
 ],
@@ -1878,8 +1777,7 @@ hoverColor:Color(0xFFf5fbfb),
 ],
 ),
 ),
-).animateOnPageLoad(
-animationsMap['containerOnPageLoadAnimation']!),
+)
 ),
 ],
 ),
