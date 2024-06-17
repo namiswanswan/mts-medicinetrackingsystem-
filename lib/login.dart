@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:realme/home.dart'; // Adjust the import based on your actual project structure
+import 'package:realme/home.dart';
 
 class LoginWidget extends StatefulWidget {
   @override
@@ -24,7 +24,6 @@ class _LoginWidgetState extends State<LoginWidget> {
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
-          // Background Image Container
           Positioned(
             top: 60,
             left: 36,
@@ -61,7 +60,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // Login Text and Line Widget
                       Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: Center(
@@ -69,7 +67,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             alignment: Alignment.center,
                             children: [
                               Text(
-                                'Login',
+                                'ㅤLoginㅤ',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Color.fromRGBO(0, 0, 0, 1),
@@ -79,11 +77,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 ),
                               ),
                               Positioned(
-                                bottom: -4,
+                                bottom: -8,
                                 left: 0,
                                 right: 0,
                                 child: Container(
-                                  height: 8,
+                                  height: 11,
                                   width: 200,
                                   color: Color(0xFF05D5CD),
                                 ),
@@ -92,7 +90,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 12),
+                      SizedBox(height: 18),
 
                       // Aligned Text Section
                       Padding(
@@ -225,8 +223,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                               ),
                             ),
                             SizedBox(height: 20),
-
-                            // Sign in with Google
                             Column(
                               children: [
                                 Text(
