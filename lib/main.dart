@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'medi',
-      home: Login(),
+      home: LoginPage(),
       debugShowCheckedModeBanner: false, // Set debug banner to false
     );
   }

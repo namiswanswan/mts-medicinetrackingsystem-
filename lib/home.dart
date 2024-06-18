@@ -60,21 +60,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                     indicatorPadding: EdgeInsets.all(1), // Ensure the indicator covers the entire tab
                                     indicator: ShapeDecoration(
                                         shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(100), // Creates border radius for the indicator
+                                            borderRadius: BorderRadius.circular(1000), // Creates border radius for the indicator
                                             side: BorderSide(color: Color(0xFF06d5cd), width: 2), // Border color and width when selected
                                         ),
                                         color: Color(0x4c06d5cd), // Fill color when selected
                                     ),
-                                    labelColor: Colors.black, // Color of the label when selected
-                                    unselectedLabelColor: Colors.black, // Color of the label when not selected
-                                    labelStyle: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16, // Ensure consistent font size when selected
-                                    ),
-                                    unselectedLabelStyle: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16, // Ensure consistent font size when not selected
-                                    ),
+                                    labelColor: Color(0xFF4c06d5cd), // Color of the label when selected
+                                    unselectedLabelColor: Color(0xffdfedec), // Color of the label when not selected
                                     tabs: [
                                         Tab(
                                             child: Container(
@@ -82,16 +74,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                 padding: EdgeInsets.symmetric(horizontal: 14, vertical: 0.5), // Padding inside the tab
                                                 decoration: BoxDecoration(
                                                     borderRadius: BorderRadius.circular(1000), // Rounded corners
-                                                    color: tabController!.index == 0 ? Color(0xffdfedec) : Colors.transparent, // Background color when selected and unselected
-                                                    border: Border.all(color: tabController!.index == 0 ? Color(0xFF06d5cd) : Color(0xffe7eae9), width: 2), // Border color based on selection
+                                                    color: Color(0xffdfedec), // Background color when not selected
+                                                    border: Border.all(color: Color(0xffe7eae9), width: 2), // Border color when not selected
                                                 ),
                                                 child: Text(
                                                     'Medicines',
                                                     style: TextStyle(
                                                         fontFamily: 'Poppins',
                                                         letterSpacing: 0,
-                                                        fontSize: 16,
-                                                        color: Colors.black, // Text color remains black
                                                     ),
                                                 ),
                                             ),
@@ -102,16 +92,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                 padding: EdgeInsets.symmetric(horizontal: 14, vertical: 0.5), // Padding inside the tab
                                                 decoration: BoxDecoration(
                                                     borderRadius: BorderRadius.circular(1000), // Rounded corners
-                                                    color: tabController!.index == 1 ? Color(0xffdfedec) : Colors.transparent, // Background color when selected and unselected
-                                                    border: Border.all(color: tabController!.index == 1 ? Color(0xFF06d5cd) : Color(0xffe7eae9), width: 2), // Border color based on selection
+                                                    color: Color(0xffdfedec), // Background color when not selected
+                                                    border: Border.all(color: Color(0xffe7eae9), width: 2), // Border color when not selected
                                                 ),
                                                 child: Text(
                                                     'Consultation',
                                                     style: TextStyle(
                                                         fontFamily: 'Poppins',
                                                         letterSpacing: 0,
-                                                        fontSize: 16,
-                                                        color: Colors.black, // Text color remains black
                                                     ),
                                                 ),
                                             ),
@@ -140,11 +128,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                                                     setState(() {});
                                                 },
                                                 calendarStyle: CalendarStyle(
-                                                    weekendTextStyle: TextStyle(color: Colors.grey),
-                                                    todayDecoration: BoxDecoration(
-                                                        color: Color(0xFF06D5CD), // Today's date color
-                                                        shape: BoxShape.circle,
-                                                    ),
+                                                    weekendTextStyle: TextStyle(color: Colors.blue),
                                                 ),
                                                 headerStyle: HeaderStyle(
                                                     formatButtonVisible: false, // Remove month button
@@ -570,7 +554,3 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         );
     }
 }
-
-
-
-
