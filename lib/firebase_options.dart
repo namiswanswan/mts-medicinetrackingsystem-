@@ -87,5 +87,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'realme-e936e.appspot.com',
     measurementId: 'G-HJK5R4V536',
   );
-
 }
