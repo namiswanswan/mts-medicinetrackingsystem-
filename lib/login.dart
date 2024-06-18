@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:realme/home.dart';
 
-class LoginWidget extends StatefulWidget {
-  @override
-  _LoginWidgetState createState() => _LoginWidgetState();
+class Login extends StatefulWidget {
+@override
+_LoginState createState() => _LoginState();
 }
 
-class _LoginWidgetState extends State<LoginWidget> {
+class _LoginState extends State<Login> {
   bool _obscureText = true;
   FocusNode _emailFocusNode = FocusNode();
   FocusNode _passwordFocusNode = FocusNode();
@@ -67,7 +67,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             alignment: Alignment.center,
                             children: [
                               Text(
-                                'ㅤLoginㅤ',
+                                'Login',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Color.fromRGBO(0, 0, 0, 1),
@@ -198,27 +198,29 @@ class _LoginWidgetState extends State<LoginWidget> {
 
                             SizedBox(height: 20),
 
-                            // Login Button
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Home()),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.black,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
+                            // Centered Login Button
+                            Center(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => Home()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.black,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
                                 ),
-                                padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
-                              ),
-                              child: Text(
-                                'Login',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Poppins',
-                                  fontSize: 17,
+                                child: Text(
+                                  'Login',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Poppins',
+                                    fontSize: 17,
+                                  ),
                                 ),
                               ),
                             ),
@@ -298,7 +300,3 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 }
-
-
-
-
