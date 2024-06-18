@@ -8,20 +8,33 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
   bool _obscureText = true;
   FocusNode _emailFocusNode = FocusNode();
   FocusNode _passwordFocusNode = FocusNode();
-  bool _isGoogleSigningIn = false;
-
+  bool _isGoogleSignIn = false;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 1, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    _tabController.dispose();
+    super.dispose();
+  }
 
   Future<void> _signInWithGoogle() async {
     setState(() {
-      _isGoogleSigningIn = true;
+      _isGoogleSignIn = true;
     });
-
     try {
       final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
       if (googleSignInAccount != null) {
@@ -31,7 +44,6 @@ class _LoginState extends State<Login> {
           idToken: googleSignInAuthentication.idToken,
           accessToken: googleSignInAuthentication.accessToken,
         );
-
         final UserCredential authResult = await _auth.signInWithCredential(credential);
         final User? user = authResult.user;
 
@@ -42,27 +54,18 @@ class _LoginState extends State<Login> {
           );
         }
       }
-    } catch (error) {
+    } catch(error) {
       print('Error signing in with Google: $error');
-      // Handle sign-in errors
     } finally {
       setState(() {
-        _isGoogleSigningIn = false;
+        _isGoogleSignIn = false;
       });
     }
   }
-
-  @override
-  void dispose() {
-    _emailFocusNode.dispose();
-    _passwordFocusNode.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromRGBO(245, 251, 251, 1),
       body: Stack(
         children: <Widget>[
           Positioned(
@@ -73,6 +76,13 @@ class _LoginState extends State<Login> {
               height: 175,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+              BoxShadow(
+              color: Color.fromRGBO(0, 0, 0, 0.25),
+              offset: Offset(0, 0),
+              blurRadius: 5,
+            ),
+                  ],
                 color: Color.fromRGBO(245, 251, 251, 1),
               ),
               child: Center(
@@ -80,97 +90,80 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
-          // Login Container
-          Positioned.fill(
-            top: 231,
-            child: SingleChildScrollView(
-              child: Center(
-                child: Container(
-                  width: 369,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color.fromRGBO(0, 0, 0, 0.25),
-                        offset: Offset(1, 1),
-                        blurRadius: 4,
+          Positioned(
+            top: 239,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Container(
+                width: 370,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color.fromRGBO(0, 0, 0, 0.25),
+                      offset: Offset(1, 0),
+                      blurRadius: 10,
+                    ),
+                  ],
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                ),
+                child: Column(
+                  children: [
+                    TabBar(
+                      controller: _tabController,
+                      indicator: UnderlineTabIndicator(
+                        borderSide: BorderSide(width: 3, color: Color(0xFF05D5CD)),
                       ),
-                    ],
-                    color: Color.fromRGBO(255, 255, 255, 1),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: Center(
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Text(
-                                'Login',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(0, 0, 0, 1),
-                                  fontFamily: 'Poppins',
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                              Positioned(
-                                bottom: -8,
-                                left: 0,
-                                right: 0,
-                                child: Container(
-                                  height: 11,
-                                  width: 200,
-                                  color: Color(0xFF05D5CD),
-                                ),
-                              ),
-                            ],
+                      labelColor: Color.fromRGBO(0, 0, 0, 1),
+                      unselectedLabelColor: Colors.white,
+                      labelStyle: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 28,
+                        fontWeight: FontWeight.normal,
+                      ),
+                      tabs: [
+                        Padding(
+                          padding: EdgeInsets.only(top: 10),
+                          child: Tab(
+                            text: 'Login',
                           ),
                         ),
-                      ),
-                      SizedBox(height: 18),
-
-                      // Aligned Text Section
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 25),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0), // Adjust left padding here
-                              child: Text(
-                                'Welcome Back',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(0, 0, 0, 1),
-                                  fontFamily: 'Poppins',
-                                  fontSize: 28,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0), // Adjust left padding here
-                              child: Text(
-                                'Fill out the information below in order to \n access your account.',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(87, 99, 108, 1),
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 20),
-
-                            // Email and Password Fields
-                            Column(
+                      ],
+                    ),
+                    Container(
+                      height: 475,
+                      child: TabBarView(
+                        controller: _tabController,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 26),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                SizedBox(height: 20),
+                                Text(
+                                  'Welcome Back',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(0, 0, 0, 1),
+                                    fontFamily: 'Poppins',
+                                    fontSize: 28,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  'Fill out the information below in order to \n access your account.',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: Color.fromRGBO(87, 99, 108, 1),
+                                    fontFamily: 'Poppins',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                                SizedBox(height: 20),
                                 TextField(
                                   focusNode: _emailFocusNode,
                                   decoration: InputDecoration(
@@ -225,7 +218,7 @@ class _LoginState extends State<Login> {
                                         });
                                       },
                                       child: Padding(
-                                        padding: const EdgeInsets.only(right: 12.0),
+                                        padding: const EdgeInsets.only(right: 20),
                                         child: Icon(
                                           _obscureText ? Icons.visibility_off : Icons.visibility,
                                           color: Colors.grey,
@@ -234,104 +227,100 @@ class _LoginState extends State<Login> {
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-
-                            SizedBox(height: 20),
-
-                            // Centered Login Button
-                            Center(
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => Home()),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.black,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
-                                ),
-                                child: Text(
-                                  'Login',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Poppins',
-                                    fontSize: 17,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 20),
-                            Column(
-                              children: [
-                                Text(
-                                  'Or sign in with',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color.fromRGBO(88, 100, 109, 1),
-                                    fontFamily: 'Poppins',
-                                    fontSize: 15,
-                                  ),
-                                ),
                                 SizedBox(height: 20),
-                                Center( // Center the buttons and text
-                                  child: Column(
-                                    children: [
-                                      OutlinedButton(
-                                        onPressed: _signInWithGoogle,
-                                        style: OutlinedButton.styleFrom(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(30),
+                                Center(
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => Home()),
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.black,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      padding: EdgeInsets.symmetric(horizontal: 64, vertical: 16),
+                                    ),
+                                    child: Text(
+                                      'Login',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Poppins',
+                                        fontSize: 17,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 14),
+                                Column(
+                                  children: [
+                                    Text(
+                                      'Or sign in with',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Color.fromRGBO(88, 100, 109, 1),
+                                        fontFamily: 'Poppins',
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                    SizedBox(height: 9),
+                                    Center(
+                                      child: Column(
+                                        children: [
+                                          OutlinedButton(
+                                            onPressed: _signInWithGoogle,
+                                            style: OutlinedButton.styleFrom(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30),
+                                              ),
+                                              side: BorderSide(
+                                                color: Color.fromRGBO(224, 236, 236, 1),
+                                                width: 2,
+                                              ),
+                                              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Image.asset('assets/images/Google - Original.png', width: 26, height: 27),
+                                                SizedBox(width: 10),
+                                                Text(
+                                                  'Continue With Google',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontFamily: 'Poppins',
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                          side: BorderSide(
-                                            color: Color.fromRGBO(224, 236, 236, 1),
-                                            width: 2,
-                                          ),
-                                          padding: EdgeInsets.symmetric(horizontal: 43, vertical: 16),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Image.asset('assets/images/Google - Original.png', width: 26, height: 27),
-                                            SizedBox(width: 10),
-                                            Text(
-                                              'Continue With Google',
+                                          SizedBox(height: 0),
+                                          TextButton(
+                                            onPressed: () {},
+                                            child: Text(
+                                              'Forgot Password?',
                                               style: TextStyle(
-                                                color: Colors.black,
+                                                color: Color.fromRGBO(16, 21, 24, 1),
                                                 fontFamily: 'Poppins',
                                                 fontSize: 14,
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(height: 12),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: Text(
-                                          'Forgot Password?',
-                                          style: TextStyle(
-                                            color: Color.fromRGBO(16, 21, 24, 1),
-                                            fontFamily: 'Poppins',
-                                            fontSize: 14,
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                      SizedBox(height: 15),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -341,5 +330,3 @@ class _LoginState extends State<Login> {
     );
   }
 }
-
-
