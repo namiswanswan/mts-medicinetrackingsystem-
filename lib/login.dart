@@ -76,13 +76,13 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
               height: 175,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-              BoxShadow(
-              color: Color.fromRGBO(0, 0, 0, 0.25),
-              offset: Offset(0, 0),
-              blurRadius: 5,
-            ),
-                  ],
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromRGBO(0, 0, 0, 0.25),
+                    offset: Offset(0, 0),
+                    blurRadius: 5,
+                  ),
+                ],
                 color: Color.fromRGBO(245, 251, 251, 1),
               ),
               child: Center(
@@ -330,4 +330,6 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
     );
   }
 }
+
+
 
