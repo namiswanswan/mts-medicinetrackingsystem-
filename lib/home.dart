@@ -118,6 +118,49 @@ class _HomeState extends State<Home> {
             ConsultationTab(),
           ],
         ),
+        bottomNavigationBar: Container(
+          padding: EdgeInsets.symmetric(horizontal: 30),
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.white, // Rounded fill color
+            borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                icon: Icon(Icons.home, color: Colors.black, size: 32),
+                // Unfilled home icon
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => Home()), // Navigate to Home screen
+                  );
+                },
+              ),
+              Container(
+                height: 60,
+                width: 60,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(18),
+                  color: Color(0xFF87EAE6), // Transparent background for the plus icon
+                ),
+                child: IconButton(
+                  icon: Icon(Icons.add, color: Colors.black, size: 32),
+                  onPressed: () {
+                    // Add functionality for plus icon
+                  },
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.search, color: Colors.black, size: 32), // Unfilled search icon
+                onPressed: () {
+                  // Add functionality for search icon
+                },
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
