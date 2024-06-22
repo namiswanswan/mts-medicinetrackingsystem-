@@ -349,7 +349,7 @@ class _MedicinesTabState extends State<MedicinesTab> {
             ),
           ),
           Positioned(
-            top: 55,
+            top: 51,
             left: 6,
             child: Container(
               width: 295,
@@ -366,7 +366,7 @@ class _MedicinesTabState extends State<MedicinesTab> {
             ),
           ),
           Positioned(
-            top: 45,
+            top: 53,
             left: 177,
             child: Text(
               '80%',
@@ -450,7 +450,7 @@ class _MedicinesTabState extends State<MedicinesTab> {
             ),
           ),
           Positioned(
-            top: 48,
+            top: 54,
             left: 177,
             child: Text(
               '50%',
