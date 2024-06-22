@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
             },
           ),
           title: Text(
-            'Welcome, Sana',
+            'Welcome, User',
             style: TextStyle(
               color: Color.fromRGBO(0, 0, 0, 1),
               fontFamily: 'Poppins',
