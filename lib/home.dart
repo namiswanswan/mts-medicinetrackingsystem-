@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:realme/login.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'dart:math' as math;
 
 class Home extends StatefulWidget {
   @override
@@ -513,13 +514,704 @@ class _MedicinesTabState extends State<MedicinesTab> {
     );
   }
 }
+
 class ConsultationTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Consultation Tab',
-        style: TextStyle(fontSize: 24),
+    return Container(
+      width: 393,
+      height: 852,
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(255, 255, 255, 1),
+      ),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            top: 20,
+            left: 10,
+            child: Container(
+              width: 374,
+              height: 94,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Color.fromRGBO(217, 217, 217, 1),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 50,
+            left: 82,
+            child: Text(
+              'pageview here',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: Color.fromRGBO(0, 0, 0, 1),
+                fontFamily: 'Poppins',
+                fontSize: 26,
+                fontWeight: FontWeight.normal,
+                height: 1,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 140,
+            left: 21,
+            child: Text(
+              'Doctors Near Me',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: Color.fromRGBO(0, 0, 0, 1),
+                fontFamily: 'Poppins',
+                fontSize: 25,
+                fontWeight: FontWeight.normal,
+                height: 1,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 190,
+            left: 19,
+            child: Container(
+              width: 355.1147766113281,
+              height: 105,
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 355,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromRGBO(0, 0, 0, 0.25),
+                            offset: Offset(1, 1),
+                            blurRadius: 3,
+                          )
+                        ],
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 355,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Color.fromRGBO(214, 249, 248, 1),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 5,
+                    left: 77,
+                    child: Text(
+                      'Dr. Emily Carter',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 1),
+                        fontFamily: 'Poppins',
+                        fontSize: 23,
+                        fontWeight: FontWeight.normal,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 30,
+                    left: 77,
+                    child: Text(
+                      'Neurologist',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Color.fromRGBO(27, 34, 37, 1),
+                        fontFamily: 'Poppins',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 2,
+                    child: Container(
+                      width: 61,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/doc1.png'),
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0.11381307989358902,
+                    left: 355.1147766113281,
+                    child: Transform.rotate(
+                      angle: -90.11856388489437 * (math.pi / 180),
+                      child: Container(
+                        width: 55.51963424682617,
+                        height: 55,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/dots.png'),//here
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 62.99995803833008,
+                    left: 13,
+                    child: Container(
+                      width: 105,
+                      height: 33,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            child: Container(
+                              width: 105,
+                              height: 33,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Color.fromRGBO(170, 205, 203, 0.7),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 3,
+                            left: 4,
+                            child: Text(
+                              '⏱︎ 14 years',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Poppins',
+                                fontSize: 17,
+                                fontWeight: FontWeight.normal,
+                                height: 0,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 62.99995803833008,
+                    left: 128,
+                    child: Container(
+                      width: 64,
+                      height: 33,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            child: Container(
+                              width: 64,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Color.fromRGBO(170, 205, 203, 0.7),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 2,
+                            left: 7,
+                            child: Text(
+                              '↑ 90% ',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Poppins',
+                                fontSize: 17,
+                                fontWeight: FontWeight.normal,
+                                height: 0,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 61,
+                    left: 201,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Handle appointment button tap
+                      },
+                      child: Container(
+                        width: 146,
+                        height: 33,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Color.fromRGBO(170, 205, 203, 0.7),
+                        ),
+                        child: Center(
+                          child: Text(
+                            '+ Appointment',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 17,
+                              fontWeight: FontWeight.normal,
+                              height: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            top: 310,
+            left: 21,
+            child: Container(
+              width: 355.1147766113281,
+              height: 105,
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 355,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromRGBO(0, 0, 0, 0.25),
+                            offset: Offset(1, 1),
+                            blurRadius: 3,
+                          )
+                        ],
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 355,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Color.fromRGBO(214, 249, 248, 1),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 5,
+                    left: 77,
+                    child: Text(
+                      'Dr. James Benedict',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 1),
+                        fontFamily: 'Poppins',
+                        fontSize: 23,
+                        fontWeight: FontWeight.normal,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 32,
+                    left: 77,
+                    child: Text(
+                      'Pediatrician',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Color.fromRGBO(27, 34, 37, 1),
+                        fontFamily: 'Poppins',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 2,
+                    child: Container(
+                      width: 61,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/doc2.png'),
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0.11381307989358902,
+                    left: 355.1147766113281,
+                    child: Transform.rotate(
+                      angle: -90.11856388489437 * (math.pi / 180),//here
+                      child: Container(
+                        width: 55.51963424682617,
+                        height: 55,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/dots.png'),
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 64,
+                    left: 13,
+                    child: Container(
+                      width: 105,
+                      height: 33,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            child: Container(
+                              width: 105,
+                              height: 33,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Color.fromRGBO(170, 205, 203, 0.7),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 6,
+                            left: 4,
+                            child: Text(
+                              '⏱︎ 18 years',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Poppins',
+                                fontSize: 17,
+                                fontWeight: FontWeight.normal,
+                                height: 1,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 64,
+                    left: 128,
+                    child: Container(
+                      width: 64,
+                      height: 34,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            child: Container(
+                              width: 64,
+                              height: 33,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Color.fromRGBO(170, 205, 203, 0.7),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 6,
+                            left: 7,
+                            child: Text(
+                              '↑ 95% ',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Poppins',
+                                fontSize: 17,
+                                fontWeight: FontWeight.normal,
+                                height: 1,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 62.99995803833008,
+                    left: 201,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Handle appointment button tap
+                      },
+                      child: Container(
+                        width: 146,
+                        height: 33,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Color.fromRGBO(170, 205, 203, 0.7),
+                        ),
+                        child: Center(
+                          child: Text(
+                            '+ Appointment',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 17,
+                              fontWeight: FontWeight.normal,
+                              height: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          //doc3
+          Positioned(
+            top: 430,
+            left: 19,
+            child: Container(
+              width: 355.1147766113281,
+              height: 105,
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 355,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromRGBO(0, 0, 0, 0.25),
+                            offset: Offset(1, 1),
+                            blurRadius: 3,
+                          )
+                        ],
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 355,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Color.fromRGBO(214, 249, 248, 1),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 5,
+                    left: 77,
+                    child: Text(
+                      'Dr. Emily Carter',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Color.fromRGBO(0, 0, 0, 1),
+                        fontFamily: 'Poppins',
+                        fontSize: 23,
+                        fontWeight: FontWeight.normal,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 30,
+                    left: 77,
+                    child: Text(
+                      'Neurologist',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Color.fromRGBO(27, 34, 37, 1),
+                        fontFamily: 'Poppins',
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 2,
+                    child: Container(
+                      width: 61,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        image: DecorationImage(
+                          image: AssetImage('assets/images/doc1.png'),
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0.11381307989358902,
+                    left: 355.1147766113281,
+                    child: Transform.rotate(
+                      angle: -90.11856388489437 * (math.pi / 180),
+                      child: Container(
+                        width: 55.51963424682617,
+                        height: 55,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/dots.png'),//here
+                            fit: BoxFit.fitWidth,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 62.99995803833008,
+                    left: 13,
+                    child: Container(
+                      width: 105,
+                      height: 33,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            child: Container(
+                              width: 105,
+                              height: 33,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Color.fromRGBO(170, 205, 203, 0.7),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 3,
+                            left: 4,
+                            child: Text(
+                              '⏱︎ 14 years',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Poppins',
+                                fontSize: 17,
+                                fontWeight: FontWeight.normal,
+                                height: 0,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 62.99995803833008,
+                    left: 128,
+                    child: Container(
+                      width: 64,
+                      height: 33,
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            child: Container(
+                              width: 64,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Color.fromRGBO(170, 205, 203, 0.7),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 2,
+                            left: 7,
+                            child: Text(
+                              '↑ 90% ',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                color: Color.fromRGBO(0, 0, 0, 1),
+                                fontFamily: 'Poppins',
+                                fontSize: 17,
+                                fontWeight: FontWeight.normal,
+                                height: 0,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 61,
+                    left: 201,
+                    child: GestureDetector(
+                      onTap: () {
+                        // Handle appointment button tap
+                      },
+                      child: Container(
+                        width: 146,
+                        height: 33,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Color.fromRGBO(170, 205, 203, 0.7),
+                        ),
+                        child: Center(
+                          child: Text(
+                            '+ Appointment',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color.fromRGBO(0, 0, 0, 1),
+                              fontFamily: 'Poppins',
+                              fontSize: 17,
+                              fontWeight: FontWeight.normal,
+                              height: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
